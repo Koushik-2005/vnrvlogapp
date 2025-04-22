@@ -1,10 +1,9 @@
-import { useContext } from "react";
-import React from "react";
-import { Link, useNavigate } from "react-router-dom";
-import { useClerk, useUser } from "@clerk/clerk-react";
-import { userAuthorContextObj } from "../../contexts/UserAuthorContext";
-import { logo } from "../../assets/logo.png";
-
+import { useContext } from 'react';
+import React from 'react';
+import { Link, useNavigate } from 'react-router-dom';
+import { useClerk, useUser } from '@clerk/clerk-react';
+import { userAuthorContextObj } from '../../contexts/UserAuthorContext';
+import logo from '../../assets/logo.png'
 function Header() {
   const { signOut } = useClerk();
   const { isSignedIn, user, isLoaded } = useUser();
@@ -14,8 +13,8 @@ function Header() {
   async function handleSignout() {
     await signOut();
     setCurrentUser(null);
-    localStorage.clear();
-    navigate("/");
+    localStorage.clear()
+    navigate('/');
   }
 
   return (
@@ -25,23 +24,22 @@ function Header() {
         style={{
           background: "linear-gradient(135deg, #ff7e5f, #feb47b)",
           margin: "20px",
-          borderRadius: "8px",
+          borderRadius: "8px", 
         }}
       >
         {/* Logo Section */}
         <div className="d-flex justify-content-center">
           <Link to="/">
-            {logo}
             <img
-              src={logo} // Replace with your logo URL
-              alt="Logo"
+              src="" // Replace with your logo URL
+              alt="{logo}"
               width="150px"
               className="rounded"
               style={{ border: "2px solid #fff" }}
             />
           </Link>
         </div>
-
+  
         {/* Links or User Information Section */}
         <ul className="d-flex justify-content-around align-items-center list-unstyled m-0">
           {!isSignedIn ? (
@@ -91,10 +89,7 @@ function Header() {
                 </p>
               </div>
               <div className="ms-2">
-                <p
-                  className="mb-0 text-white"
-                  style={{ fontWeight: "bold", fontSize: "18px" }}
-                >
+                <p className="mb-0 text-white" style={{ fontWeight: "bold", fontSize: "18px" }}>
                   {user.firstName}
                 </p>
                 <button
@@ -124,13 +119,15 @@ function Header() {
           )}
         </ul>
       </nav>
-
+  
       {/* Content of the Page */}
       <div style={{ backgroundColor: "#f0f0f0", padding: "20px" }}>
         {/* Your other page content goes here */}
       </div>
     </div>
   );
+  
+
 }
 
 export default Header;
